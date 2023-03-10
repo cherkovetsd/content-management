@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet">
+    <meta name="keywords" content="записи, редактор">
+    <meta name="notes" content="Редактор записей">
+    <title>Записи</title>
+</head>
+<body class="body">
+    <header class="menu_header">
+        <h1> Личная страница Йошикаге Киры </h1>
+        <nav class="menu_horizontal">
+            <div class="menu_vertical">
+                <a href="index.html" class="button"> Обо мне </a>
+                <div class="menu_horizontal">
+                    <a href="index.html#personal_info" class="button"> Кто я такой </a>
+                    <a href="index.html#lifestyle" class="button"> Здоровье и привычки </a>
+                </div>
+            </div>
+            <div class="menu_vertical">
+                <a href="gallery.html" class="button"> Галерея </a>
+                <div class="menu_horizontal">
+                    <a href="gallery.html#code" class="button"> Код моего стэнда</a>
+                    <a href="gallery.html#painting" class="button"> Моя любимая картина </a>
+                    <a href="gallery.html#cat" class="button"> Котик </a>
+                    <a href="gallery.html#shirt" class="button"> Рубашка </a>
+                </div>
+            </div>
+            <a href="form.html" class="button"> Форма для заметок </a>
+        </nav>
+    </header>
+    <div class="section_list">
+        <br>
+        <div class="article">
+            <form class="form" id="form">
+                <h2> Создать запись </h2>
+                <p>Тип записи:</p>
+                <input class="radio" type="radio" id="schedule" name="type" value="schedule">
+                <label for="schedule">Расписание</label><br>
+                <input class="radio" type="radio" id="notes" name="type" value="notes">
+                <label for="notes">Заметки</label><br>
+                <input class="radio" type="radio" id="shopping" name="type" value="shopping">
+                <label for="shopping">Список покупок</label><br>
+                <label for="text">Текст:</label>
+                <input type="text" id="text" name="text"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <br>
+        <div class="article_list" id="containers">
+            <div class="container">
+                <h2> Расписание: </h2>
+            </div>
+            <div class="container">
+                <h2> Заметки: </h2>
+            </div>
+            <div class="container">
+                <h2> Список покупок: </h2>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="scripts/form.js"></script>
+<script src="scripts/menu.js"></script>
+</html>

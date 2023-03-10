@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <script src="scripts/loadingstart.js"></script>
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet">
+    <meta name="keywords" content="галерея, йошикаге кира">
+    <meta name="description" content="Галерея Йошикаге Киры">
+    <title>Йошикаге Кира</title>
+</head>
+<body class="body">
+<header class="menu_header">
+    <h1> Личная страница Йошикаге Киры </h1>
+    <nav class="menu_horizontal">
+        <div class="menu_vertical">
+            <a href="index.html" class="button"> Обо мне </a>
+            <div class="menu_horizontal">
+                <a href="index.html#personal_info" class="button"> Кто я такой </a>
+                <a href="index.html#lifestyle" class="button"> Здоровье и привычки </a>
+            </div>
+        </div>
+        <div class="menu_vertical">
+            <a href="gallery.html" class="button"> Галерея </a>
+            <div class="menu_horizontal">
+                <a href="gallery.html#code" class="button"> Код моего стэнда</a>
+                <a href="gallery.html#painting" class="button"> Моя любимая картина </a>
+                <a href="gallery.html#cat" class="button"> Котик </a>
+                <a href="gallery.html#shirt" class="button"> Рубашка </a>
+            </div>
+        </div>
+        <a href="form.html" class="button"> Форма для заметок </a>
+    </nav>
+</header>
+<div class="article_list">
+    <article class="article" id="code">
+        <h3> Код моего Sheer Heart Attack: </h3>
+        <code>
+            enemyLocation = findHeatSource(); <br>
+            rotate(enemyLocation); <br>
+            say("СЮДА СМОТРИ"); <br>
+            attack(enemyLocation);
+        </code>
+    </article>
+    <article class="frame" id="painting">
+        <h3> Моя любимая картина: </h3>
+        <img src="Mona_Lisa.png" width="320" height="478">
+    </article>
+    <article class="frame" id="cat">
+        <h3> Мой любимый котик: </h3>
+        <pre>
+      ▓▓▒▒▒▒▒▒▒░░░▒▒▒▒▒▒▒▒▒▒▒░░▒▒▒▒▒░▒░▒▒▒░░░░░░░░▒░░▒▒▓
+      ▓▓▓▒▒▒▒▒░▓▓░░▒▒▒▒▒▒▒▒▒▒░▒▒▒▒▒░░░░░░░░░░░▓▓▒░▒░▒░░░
+      ▓▒▒▒▒▒▒░░▓▓▒░░▒▒░░░░░▒░░▒▒░░░░░░░░░░░░▒▓▓▓▓░▒░░░░░
+      ░░░░░▒▒░▓▓▓▒▒░▒▒▒░▒░░░▒▒▒▒▒▒▒▒▒▒░░░░░▒░░▓▓▓░░░░░░░
+      ░░░░░░░░▓▓▓▓░░░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░▓▓▓▓▒░▒▒▒▒▒
+      ░░░░▒▒░▒▓▓▓▓▒░▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▒░▒▒░░░
+      ░▒░░░▒░▒▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒░░▒▒▒▒
+      ░░░░░░░▒▓▓▓▓▓▒░▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▒░░░▒▒▒
+      ░▒░▒░▒░▒▓▓▓▓▓▒░▓▓▓▓▓▓▓▓▓▒▓▒▒▒▒▒▒▒▒▒▒░▒▓▓▓▒▓▒░░░░▒▒
+      ░░░░░░░▒▓▒▓▓▓▓▒▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░░▓▓▓▓▒▓▒░░░░░▒
+      ░░░▒▒░░▒▓░▓▓▓▓▓▓▓▓▓▓▓▒▒▓▒▒▒▒▒▒▒▓▒░░░▓▓▓▓▓▒▓▒░░░░░▒
+      ▒▒░▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▓▒▒▒▒▒▒▒▒░░▒▓▓▓▓▓▓▓▓▓░░░░░░
+      ▒▒░░░▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▒▒▒▒▓▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓░░░▓▓░
+      ▒▒░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▒▒▒▒▒▒▒▒▒▓▓▓▓▒▓▓▓▒░▒▓▓▓░
+      ▒▒░░░▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓▒▓▒▓▓▓▓▒▒▓▓▓▓░
+      ░░░░▒▓▓▓▒▒▒▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓░
+      ▒▓▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒░▒▒▓▓▓▓▓▓▓▒▒░▓▓▓▓▓▓▓
+      ▓▓▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▓▓▓▓░▒░▒▓▓▓▓▓▓
+      ▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▒▒▒░▒▒▓▒▒▒▒▒▒▒▒▒▒░░▒▒▒▓▒▒░▒▒▓▓▓▓▓▓▓
+      ▓▓▓▓▓▓▓▓▒▓▓▓▒░░░▒▒▒░░▒▓▒▒▒▒▒▒▒░░░░░░░░░▒▒▒▒▓▓▓▒▓▓▓
+      ▓▓▓▓▓▓▓▓░▓▓▓▓▒▒▓▓▓▓▒░▒▒▒▒▒▒▒▒▒░▒▓▓▓▓▓░▓▓▒▒░▓▓▓▓▒▒▓
+      ▓▓▓▓▓▓▓░░░▓▓▓▓▒▒▒▒▒▒▒▒░▒▒▒▒▒░░░▒▒▓▓▒▒▓▓▓▒░░░▒▓▓▒░▒
+      ▓▓▓▓▓▓▒░▒░▒▓▓▓▓▓▒▓▓▓▒░░▓▓▓▓▓▒░░▒▒▒░▒▓▓▒▓▒░░░░▒▓▓▒▒
+      ▒▒▒▓▓▓▒▒▒▒▒▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▒▒▓▒▒▒▓▒▒▓▓▒░▒▒░▓▓▓▒
+      ▓▓▒▓▓▓▒▒▒▒▒▒▓▒▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▓▓▒▒▒▓▒▒▓▓▓▓▒▒▒▒▒▓▓▒
+      ▒▓▒▓▓▓▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▒▓▓▓▒▓▒▒▒▒▒▓▓▒▓▓▓▓▓▓▒▒▒▒▓▒▓
+      ▓▓▓▒▓▓▓▓▓▓▓▓░▓▓▓▓▓▓▓▓▓▓▓▒▓▒▒▒▒▒▒▒▓▓▒▓▓▓▓▓▓▓▓▒▒▓▓▒▓
+      ▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▒▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▒▒▓
+      ▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▓▓▓▓▓▒▓▓░▒▒▒▒▓▒▒▒▓
+      ▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓▓▓▒▒▓▒▒▒▒▓▓▒▒▒▒▒
+      ▓▓▓▓▓▓▓▒▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▒▓▒▒▒▒▓▓▓▓▒░▒▓▓▒▒▒▓▒▒░░▒▒▒
+      ▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▒░▒▓▓▓▓▒▒▒▒▒▓▓▓▒░░▒▓▒▒▒▓▒▒▒▒▒▒▒▒▒
+      ▓▓▓▓▓▓▓▓▒▒░▒▒▓▓▓▓▓▒▒▒▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▓▓▓▒▒
+      ▓▓▓▓▓▓▓▒▒▒░░░░▒▓▓▓▒▒▓▒▒▓▓▓▓▓▒░░▒▒▒▒▒▓▓▒▒▒▒▓▓▓▓▓▓▓▒
+      ▓▓▓▓▓▓▒▒░░▒▒▒░░░▒▓▓▓▒▓▒▒▒░░░░▒▒▒▒▒▓▒░░░▒▒▓▓▓▓▓▓▓▓▓
+              </pre>
+    </article>
+    <article class="frame" id="shirt">
+        <h3> Цвета моей любимой рубашки: </h3>
+        <div class="wrapper">
+            <div class="one">&nbsp</div>
+            <div class="two">&nbsp</div>
+            <div class="three">&nbsp</div>
+            <div class="four">&nbsp</div>
+            <div class="five">&nbsp</div>
+            <div class="six">&nbsp</div>
+            <div class="seven">&nbsp</div>
+        </div>
+    </article>
+</div>
+</main>
+<footer class="footer">
+    <img src="killer_queen.png" class="footer__big_image" width="453" height="430">
+    <img src="skeleton.jpg" class="footer__small_image" width="256" height="144">
+    Йошикаге Кира, Морио, Япония. 1999 г.
+    <script class="loading_bar" src="scripts/loadingfinished.js"></script>
+</footer>
+</body>
+<script src="scripts/menu.js"></script>
+</html>
+

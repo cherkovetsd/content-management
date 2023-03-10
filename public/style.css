@@ -1,0 +1,144 @@
+.body {background-color: #bbb5f4;}
+
+.text {background-color: #aad78f;
+    margin-top: 25px;
+    line-height: 20px;
+    color: #242a4d;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
+.article {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: #aad78f;
+    color: #242a4d;
+    display: table;
+    box-shadow: 4px 3px rebeccapurple;
+    border-radius: 10px;
+}
+
+.frame {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background: purple;
+    color: yellow;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 10px;
+    border-color: black;
+    box-shadow: 4px 3px rebeccapurple;
+    text-transform: capitalize;
+}
+
+.aside {
+    align-self: flex-end;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color:#552870;
+}
+
+.menu_header {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color:purple;
+    color:yellow;
+}
+
+.menu_horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.menu_vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    margin: 5px 15px 5px 15px;
+    border-style: outset;
+    border-width: 2.5px;
+    padding: 2.5px;
+    border-color: black;
+    background: rebeccapurple;
+    color:yellow;
+}
+
+.button:hover {
+    background: #aad78f;
+}
+
+#cat pre {
+    color:pink
+}
+
+.section_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.article_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-rows: 4fr 1fr 4fr 1fr 4fr 1fr 4fr;
+    gap: 0;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.wrapper :nth-child(even) {background: gold;}
+.wrapper :nth-child(odd) {background: #aad78f;}
+
+.footer {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:purple;
+    color:yellow;
+    position: absolute;
+}
+
+@media screen and (max-width: 1600px) {
+    .footer__big_image {
+        display: none;
+    }
+
+    .footer__small_image {
+        position: absolute;
+        left:5%;
+        bottom: 20px;
+    }
+}
+
+@media screen and (min-width: 1601px) {
+    .footer__big_image {
+        position: absolute;
+        left:5%;
+        bottom: 10px;
+    }
+
+    .footer__small_image {
+        display: none;
+    }
+}
+
+.loading_bar {
+    color: #552870;
+    background: rebeccapurple;
+}
+
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: #aad78f;
+    color: #242a4d;
+    display: block;
+    box-shadow: 4px 3px rebeccapurple;
+    border-radius: 10px;
+}
