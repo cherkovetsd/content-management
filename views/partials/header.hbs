@@ -1,10 +1,11 @@
 <div class="list_vertical">
   <header class="menu_header">
     <h1> Моя страничка </h1>
-    <nav class="menu_horizontal">
-      <a href="/" class="button"> Посты </a>
-      <a href="open" class="button"> Открыть пост </a>
-      <a href="upload" class="button"> Загрузить пост </a>
-    </nav>
+    {{#if isEditor}}
+      {{>headerEditor}}
+    {{else}}
+      {{>headerGuest}}
+    {{/if}}
+    Вы вошли как {{name}}
   </header>
 </div>
