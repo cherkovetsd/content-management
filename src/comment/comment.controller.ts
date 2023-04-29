@@ -16,12 +16,7 @@ import { UploadCommentDto } from './dto/upload-comment.dto';
 import { GetCommentListDto } from './dto/get-comment-list.dto';
 import { RemoveCommentDto } from './dto/remove-comment.dto';
 import { EditCommentDto } from './dto/edit-comment.dto';
-import {
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-  getSchemaPath,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('comment')
 @Controller('comment')
@@ -30,7 +25,7 @@ export class CommentController {
   @ApiResponse({
     status: 201,
     description: 'Query successfully completed',
-    schema: { $ref: getSchemaPath(GetCommentDto) },
+    type: GetCommentDto,
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @Get('get')
@@ -42,7 +37,7 @@ export class CommentController {
   @ApiResponse({
     status: 201,
     description: 'Query successfully completed',
-    schema: { $ref: getSchemaPath(GetCommentDto) },
+    type: GetCommentListDto,
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @Get('get-from-post')
@@ -56,7 +51,7 @@ export class CommentController {
   @ApiResponse({
     status: 201,
     description: 'Query successfully completed',
-    schema: { $ref: getSchemaPath(GetCommentListDto) },
+    type: GetCommentListDto,
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @Get('get-from-user')
