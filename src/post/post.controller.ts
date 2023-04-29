@@ -14,12 +14,7 @@ import { GetPostDto } from './dto/get-post.dto';
 import { UploadPostDto } from './dto/upload-post.dto';
 import { EditPostDto } from './dto/edit-post.dto';
 import { RemovePostDto } from './dto/remove-post.dto';
-import {
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-  getSchemaPath,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('posts')
 @Controller('posts')
@@ -29,7 +24,6 @@ export class PostController {
     status: 201,
     description: 'Query successfully completed',
     type: GetPostDto,
-    //schema: { $ref: getSchemaPath(GetPostDto) },
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @Get('get')
