@@ -17,11 +17,21 @@ model User {
     password String
     posts Post[]
     comments Comment[]
+    authTokens AuthToken[]
     role Role
+}
+
+model AuthToken {
+    id Int @default(autoincrement()) @id
+    token String
+    userId Int
+    user User @relation(fields: [userId], references: [id])
+    validUntil DateTime
 }
 
 model Post {
     id Int @default(autoincrement()) @id
+    stringId String @unique
     authorId Int
     author User @relation(fields: [authorId], references: [id])
     headline String
@@ -41,6 +51,7 @@ model Tag {
 
 model Comment {
     id Int @default(autoincrement()) @id
+    stringId String @unique
     authorId Int
     author User @relation(fields: [authorId], references: [id])
     postId Int

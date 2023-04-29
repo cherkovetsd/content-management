@@ -2,7 +2,7 @@
   "name": "cherkovetsdweb",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Cherkovetc Denis Olegovich",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -23,6 +23,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/swagger": "^6.3.0",
     "@prisma/client": "^4.13.0",
     "hbs": "^4.2.0",
     "pg": "^8.10.0",
