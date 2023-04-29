@@ -2,7 +2,6 @@ import { Injectable, NotImplementedException } from '@nestjs/common';
 import { Post } from '../post/post.interface';
 import { GetCommentDto } from './dto/get-comment.dto';
 import { GetCommentListDto } from './dto/get-comment-list.dto';
-import { GetPostDto } from "../post/dto/get-post.dto";
 
 @Injectable()
 export class CommentService {

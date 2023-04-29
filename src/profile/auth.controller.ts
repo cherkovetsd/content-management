@@ -8,11 +8,7 @@ import {
   NotImplementedException,
 } from '@nestjs/common';
 import { LoginInfoDto } from './dto/login-info.dto';
-import {
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('profile')
 @Controller('auth')

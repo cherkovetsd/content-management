@@ -1,6 +1,6 @@
-import { Injectable, NotImplementedException } from "@nestjs/common";
+import { Injectable, NotImplementedException } from '@nestjs/common';
 import { Post } from './post.interface';
-import { GetPostDto } from "./dto/get-post.dto";
+import { GetPostDto } from './dto/get-post.dto';
 
 @Injectable()
 export class PostService {
