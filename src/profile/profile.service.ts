@@ -1,7 +1,9 @@
 import { Injectable, NotImplementedException } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class ProfileService {
+  constructor(private prisma: PrismaService) {}
   async GetFullName(userId: number): Promise<string> {
     throw new NotImplementedException();
   }
