@@ -1,4 +1,8 @@
-import { BaseExceptionFilter, HttpAdapterHost, NestFactory } from "@nestjs/core";
+import {
+  BaseExceptionFilter,
+  HttpAdapterHost,
+  NestFactory,
+} from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import { AppModule } from './app/app.module';
@@ -6,7 +10,7 @@ import * as hbs from 'hbs';
 import { LoadingInterceptor } from './app/loading.interceptor';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import { PrismaClientExceptionFilter } from "./prisma-client-exception/prisma-client-exception.filter";
+import { PrismaClientExceptionFilter } from './prisma-client-exception/prisma-client-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

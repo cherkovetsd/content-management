@@ -9,14 +9,16 @@ import {
   Param,
   Optional,
   Delete,
-  Patch, Query, BadRequestException
-} from "@nestjs/common";
+  Patch,
+  Query,
+  BadRequestException,
+} from '@nestjs/common';
 import { GetCommentDto } from './dto/get-comment.dto';
 import { UploadCommentDto } from './dto/upload-comment.dto';
 import { GetCommentListDto } from './dto/get-comment-list.dto';
 import { RemoveCommentDto } from './dto/remove-comment.dto';
 import { EditCommentDto } from './dto/edit-comment.dto';
-import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CommentService } from './comment.service';
 
 @ApiTags('comments')

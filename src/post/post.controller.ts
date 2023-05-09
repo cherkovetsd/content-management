@@ -8,8 +8,9 @@ import {
   NotImplementedException,
   Param,
   Delete,
-  Patch, Query
-} from "@nestjs/common";
+  Patch,
+  Query,
+} from '@nestjs/common';
 import { GetPostDto } from './dto/get-post.dto';
 import { UploadPostDto } from './dto/upload-post.dto';
 import { EditPostDto } from './dto/edit-post.dto';
@@ -48,7 +49,6 @@ export class PostController {
       'Specify authors login to only get a list of their posts with their login and name excluded from JSON data',
     required: false,
   })
-
   @Get()
   async getUserPosts(@Query('login') login?: string): Promise<GetPostListDto> {
     if (typeof login !== 'undefined') {

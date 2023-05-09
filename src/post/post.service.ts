@@ -1,5 +1,4 @@
 import { Injectable, NotImplementedException } from '@nestjs/common';
-import { Post } from './post.interface';
 import { GetPostDto } from './dto/get-post.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { UploadPostDto } from './dto/upload-post.dto';
