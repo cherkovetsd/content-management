@@ -1,12 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsInt, IsNotEmpty } from 'class-validator';
 
 export class EditCommentDto {
   @ApiProperty()
+  @IsNotEmpty()
   commentId: string;
   @ApiProperty()
-  authToken: string;
-  @ApiProperty()
-  postId: string;
-  @ApiProperty()
+  @IsNotEmpty()
   text: string;
 }

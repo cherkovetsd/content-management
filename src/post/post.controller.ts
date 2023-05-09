@@ -8,27 +8,53 @@ import {
   NotImplementedException,
   Param,
   Delete,
-  Patch,
-} from '@nestjs/common';
+  Patch, Query
+} from "@nestjs/common";
 import { GetPostDto } from './dto/get-post.dto';
 import { UploadPostDto } from './dto/upload-post.dto';
 import { EditPostDto } from './dto/edit-post.dto';
 import { RemovePostDto } from './dto/remove-post.dto';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { PostService } from './post.service';
+import { GetPostListDto } from './dto/get-post-list.dto';
 
 @ApiTags('posts')
 @Controller('posts')
 export class PostController {
+  constructor(private readonly postService: PostService) {}
   @ApiOperation({ summary: 'get post by id' })
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: 'Query successfully completed',
     type: GetPostDto,
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
-  @Get('get')
+  @Get(':id')
   async getPost(@Param('id') stringId: string): Promise<GetPostDto> {
-    throw new NotImplementedException();
+    return this.postService.getPostByStringId(stringId);
+  }
+
+  @ApiOperation({ summary: 'get a list of posts' })
+  @ApiResponse({
+    status: 200,
+    description: 'Query successfully completed',
+    type: GetPostListDto,
+  })
+  @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiQuery({
+    name: 'login',
+    type: String,
+    description:
+      'Specify authors login to only get a list of their posts with their login and name excluded from JSON data',
+    required: false,
+  })
+
+  @Get()
+  async getUserPosts(@Query('login') login?: string): Promise<GetPostListDto> {
+    if (typeof login !== 'undefined') {
+      return this.postService.getUserPostListDtoByLogin(login);
+    }
+    return this.postService.getGeneralPostListDto();
   }
 
   @ApiOperation({
@@ -41,32 +67,32 @@ export class PostController {
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiResponse({ status: 403, description: 'Forbidden' })
-  @Post('upload')
+  @Post()
   async uploadPost(@Body() request: UploadPostDto): Promise<string> {
-    throw new NotImplementedException();
+    return this.postService.uploadPost(request);
   }
 
   @ApiOperation({ summary: 'edit a post' })
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: 'Post successfully edited',
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiResponse({ status: 403, description: 'Forbidden' })
-  @Patch('edit')
+  @Patch()
   async editPost(@Body() request: EditPostDto) {
-    throw new NotImplementedException();
+    await this.postService.editPost(request);
   }
 
   @ApiOperation({ summary: 'remove a post' })
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: 'Post successfully removed',
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiResponse({ status: 403, description: 'Forbidden' })
-  @Delete('delete')
+  @Delete()
   async removePost(@Body() request: RemovePostDto) {
-    throw new NotImplementedException();
+    return await this.postService.removePost(request);
   }
 }
