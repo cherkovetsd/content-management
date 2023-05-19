@@ -33,5 +33,4 @@ if (document.location.pathname.indexOf('posts.html') != -1) {
 } else {
   button_number = 8;
 }
-console.log(document.getElementsByClassName('button')[8].textContent);
 document.getElementsByClassName('button')[button_number].style.color = 'black';

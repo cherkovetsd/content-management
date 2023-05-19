@@ -1,5 +1,27 @@
+<div class="flex_container">
 <div class="list_vertical">
-  <div class="list_vertical" id="container"> </div>
-  <button class="update_button" onclick="loadMoreComments()">Загрузить больше комментариев</button>
-  <script src="scripts/comments.js"></script>
+  <div class="article">
+    <form class="form" id="editForm">
+      <h2> Отредактировать комментарий </h2>
+      <label for="id"> ID: </label>
+      <input type="text" id="idEdit" name="idEdit"><br>
+      <label for="text">Текст:</label>
+      <br>
+      <textarea type="text" id="text" name="text"></textarea><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div class="article">
+    <form class="form" id="deleteForm">
+      <h2> Удалить комментарий </h2>
+      <label for="id"> ID: </label>
+      <input type="text" id="idDelete" name="idDelete"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <br><br>
+  <div class="flex_container" id="container"></div>
+  <script> var id = "{{id}}";</script>
+  <script src="../scripts/comments.js"></script>
+</div>
 </div>

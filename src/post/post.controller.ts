@@ -10,6 +10,8 @@ import {
   Delete,
   Patch,
   Query,
+  ValidationPipe,
+  UsePipes,
 } from '@nestjs/common';
 import { GetPostDto } from './dto/get-post.dto';
 import { UploadPostDto } from './dto/upload-post.dto';
@@ -18,6 +20,7 @@ import { RemovePostDto } from './dto/remove-post.dto';
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PostService } from './post.service';
 import { GetPostListDto } from './dto/get-post-list.dto';
+import { IsNumberString } from 'class-validator';
 
 @ApiTags('posts')
 @Controller('posts')
@@ -43,18 +46,68 @@ export class PostController {
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiQuery({
+    name: 'skip',
+    type: String,
+    description: 'Specify how many posts need to be skipped',
+    required: true,
+  })
+  @ApiQuery({
+    name: 'take',
+    type: String,
+    description: 'Specify how many posts need to be taken. No more than 10',
+    required: true,
+  })
+  @ApiQuery({
     name: 'login',
     type: String,
-    description:
-      'Specify authors login to only get a list of their posts with their login and name excluded from JSON data',
+    description: 'Filter by authors login',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'fullName',
+    type: String,
+    description: 'Filter by authors full name',
+    required: false,
+  })
+  @UsePipes(new ValidationPipe({ transform: true }))
+  @ApiQuery({
+    name: 'headline',
+    type: String,
+    description: 'Filter by post headline',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'description',
+    type: String,
+    description: 'Specify words contained in post description',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'tag',
+    type: String,
+    description: 'Filter by tag',
     required: false,
   })
   @Get()
-  async getUserPosts(@Query('login') login?: string): Promise<GetPostListDto> {
-    if (typeof login !== 'undefined') {
-      return this.postService.getUserPostListDtoByLogin(login);
-    }
-    return this.postService.getGeneralPostListDto();
+  @UsePipes(new ValidationPipe({ transform: true }))
+  async getFilteredPosts(
+    @Query('skip') skip: number,
+    @Query('take') take: number,
+    @Query('login') login?: string,
+    @Query('fullName') fullName?: string,
+    @Query('headline') headline?: string,
+    @Query('description') description?: string,
+    @Query('tag') tag?: string,
+  ): Promise<GetPostListDto> {
+    return this.postService.getFilteredPostListDto(
+      skip,
+      take,
+      login,
+      fullName,
+      headline,
+      description,
+      tag,
+    );
   }
 
   @ApiOperation({

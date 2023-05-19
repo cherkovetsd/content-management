@@ -5,7 +5,7 @@ import { GetCommentDto } from './get-comment.dto';
 export class GetCommentListDto {
   @ApiProperty({
     isArray: true,
-    type: GetPostDto,
+    type: GetCommentDto,
   })
   comments: GetCommentDto[];
 }

@@ -1,11 +1,24 @@
-<div class="list_vertical">
-  <div class="list_vertical" id="container">
+<div class="list_horizontal">
+  <div class="list_vertical">
+    <div class="flex_container">
+      <div class="article">
+        <form class="form">
+          <input type="text" id="id" name="id">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+    <div class="flex_container" id="container"></div>
     <div class="article">
-      <form class="form">
-        <input type="text" id="id" name="id">
+      <form class="form" id="form">
+        <h2> Загрузить комментарий </h2>
+        <label for="text">Текст:</label>
+        <br>
+        <textarea type="text" id="text" name="text"></textarea><br><br>
         <input type="submit" value="Submit">
       </form>
     </div>
+    <script> var id = "{{id}}";</script>
+    <script src="../scripts/loadpost.js"></script>
   </div>
-  <script src="scripts/loadpost.js"></script>
 </div>

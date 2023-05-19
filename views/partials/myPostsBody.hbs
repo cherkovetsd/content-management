@@ -1,0 +1,36 @@
+<div class="flex_container">
+  <div class="list_vertical">
+    <div class="article">
+      <form class="form" id="editForm">
+        <h2> Отредактировать пост </h2>
+        <label for="id"> ID: </label>
+        <input type="text" id="idEdit" name="idEdit"><br>
+        <label for="text">Заголовок:</label>
+        <input type="text" id="headline" name="headline"><br><br>
+        <label for="text">Ссылки на фотографии (через пробел):</label>
+        <input type="text" id="photos" name="photos"><br><br>
+        <label for="text">Описание:</label>
+        <br>
+        <textarea type="text" id="description" name="description"></textarea><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="article">
+      <form class="form" id="deleteForm">
+        <h2> Удалить пост </h2>
+        <label for="id"> ID: </label>
+        <input type="text" id="idDelete" name="idDelete"><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <br><br>
+  </div>
+</div>
+<div class="flex_container">
+  <div class = list_vertical>
+    <div class="list_vertical" id="container"> </div>
+    <button class="update_button" onclick="loadMorePosts()">Загрузить больше постов</button>
+  </div>
+</div>
+<script> var login = "{{login}}";</script>
+<script src="../scripts/myposts.js"></script>

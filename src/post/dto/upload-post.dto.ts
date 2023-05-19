@@ -16,6 +16,6 @@ export class UploadPostDto {
   tags: string[];
   @ApiProperty()
   @IsUrl({}, { each: true })
-  @Matches(new RegExp('/*(.png|.jpg|.jpeg|.gif)$'), { each: true })
+  @Matches(new RegExp('/*(.png|.jpg|.jpeg|.gif)'), { each: true })
   imageUrls: string[];
 }

@@ -1,8 +1,14 @@
-import { Get, Controller, Render } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Get, Controller, Render, Param, Query } from "@nestjs/common";
+import {
+  ApiExcludeController,
+  ApiOperation, ApiQuery,
+  ApiResponse,
+  ApiTags
+} from "@nestjs/swagger";
 
 @ApiTags('app')
-@Controller('app')
+@ApiExcludeController()
+@Controller()
 export class AppController {
   @ApiOperation({ summary: 'load index webpage' })
   @ApiResponse({
@@ -22,10 +28,11 @@ export class AppController {
     description: 'Loaded successfully',
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
-  @Get('comment')
-  @Render('comments')
-  async loadCommentPage() {
-    return { message: 'Hello world!11' };
+  @ApiResponse({ status: 403, description: 'Forbidden' })
+  @Get('my-comments/:id')
+  @Render('my-comments')
+  async loadCommentPage(@Param('id') id: string) {
+    return { id: id };
   }
 
   @ApiOperation({ summary: 'load posts webpage' })
@@ -34,10 +41,45 @@ export class AppController {
     description: 'Loaded successfully',
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
-  @Get('open')
+  @Get('open/:id')
   @Render('open')
-  async loadOpenPage() {
-    return { message: 'Hello world!11' };
+  async loadPostPage(@Param('id') id: string) {
+    return { id: id };
+  }
+
+  @ApiOperation({ summary: 'load posts webpage' })
+  @ApiResponse({
+    status: 201,
+    description: 'Loaded successfully',
+  })
+  @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiQuery({
+    name: 'id',
+    type: String,
+    description: 'Post id',
+    required: false,
+  })
+  @Get('open/')
+  @Render('open')
+  async loadEmptyPostPage(@Query('id') id: string) {
+    if (typeof id !== 'undefined') {
+      return { id: id };
+    } else {
+      return { id: '' };
+    }
+  }
+
+  @ApiOperation({ summary: 'load my-posts webpage' })
+  @ApiResponse({
+    status: 201,
+    description: 'Loaded successfully',
+  })
+  @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiResponse({ status: 403, description: 'Forbidden' })
+  @Get('my-posts/:login')
+  @Render('my-posts')
+  async loadMyPostsPage(@Param('login') login: string) {
+    return { login: login };
   }
 
   @ApiOperation({ summary: 'load posts upload webpage' })
@@ -46,7 +88,6 @@ export class AppController {
     description: 'Loaded successfully',
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
-  @ApiResponse({ status: 403, description: 'Forbidden' })
   @Get('upload')
   @Render('upload')
   async loadUploadPage() {

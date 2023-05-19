@@ -63,13 +63,20 @@ export class CommentService {
               where: { id: comment['postId'] },
             });
 
-        return {
-          authorLogin: omitUser ? '' : user['login'],
-          fullName: omitUser ? '' : user['name'],
-          postId: omitPost ? '' : comment['postId'],
-          postHeadline: omitPost ? '' : post['headline'],
-          text: comment.text,
-        };
+        if (omitUser) {
+          return {
+            postId: post['stringId'],
+            postHeadline: post['headline'],
+            text: comment.text,
+            stringId: comment.stringId,
+          };
+        } else {
+          return {
+            authorLogin: user['login'],
+            fullName: user['name'],
+            text: comment.text,
+          };
+        }
       }),
     );
 
