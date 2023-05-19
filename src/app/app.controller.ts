@@ -1,10 +1,11 @@
-import { Get, Controller, Render, Param, Query } from "@nestjs/common";
+import { Get, Controller, Render, Param, Query } from '@nestjs/common';
 import {
   ApiExcludeController,
-  ApiOperation, ApiQuery,
+  ApiOperation,
+  ApiQuery,
   ApiResponse,
-  ApiTags
-} from "@nestjs/swagger";
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('app')
 @ApiExcludeController()
