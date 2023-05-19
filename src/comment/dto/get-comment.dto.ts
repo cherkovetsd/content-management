@@ -1,14 +1,16 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class GetCommentDto {
-  @ApiProperty()
-  authorLogin: string;
-  @ApiProperty()
-  fullName: string;
-  @ApiProperty()
-  postId: string;
-  @ApiProperty()
-  postHeadline: string;
+  @ApiPropertyOptional()
+  authorLogin?: string;
+  @ApiPropertyOptional()
+  fullName?: string;
+  @ApiPropertyOptional()
+  postId?: string;
+  @ApiPropertyOptional()
+  postHeadline?: string;
   @ApiProperty()
   text: string;
+  @ApiPropertyOptional()
+  stringId?: string;
 }

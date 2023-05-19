@@ -1,11 +1,12 @@
 <div class="list_vertical">
   <header class="menu_header">
-    <h1> Моя страничка </h1>
+    <h1> Моё болото </h1>
     {{#if isEditor}}
       {{>headerEditor}}
     {{else}}
-      {{>headerGuest}}
+      {{>headerEditor}}
     {{/if}}
     Вы вошли как {{name}}
   </header>
+  <br>
 </div>

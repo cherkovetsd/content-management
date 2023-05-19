@@ -29,6 +29,7 @@ export class PostService {
   async getPostById(id: number): Promise<GetPostDto> {
     const dbPost = await this.prisma.post.findUniqueOrThrow({
       where: { id: id },
+      include: { tags: true },
     });
 
     return this.convertPostRecordToDto(dbPost);
@@ -62,6 +63,8 @@ export class PostService {
           description: post['description'],
           imageUrls: post['images'],
           tags: post['tags'].map((tag) => tag['name']),
+          commentCnt: post['comments'].length,
+          stringId: post['stringId'],
         };
       }),
     );
@@ -69,40 +72,70 @@ export class PostService {
     return { posts: postListDto };
   }
 
-  private async getUserPostsById(userId: number) {
+  private async getFilteredPosts(
+    skip: number,
+    take: number,
+    authorLogin?: string,
+    fullName?: string,
+    headline?: string,
+    description?: string,
+    tag?: string,
+  ) {
+    const filter: any = {};
+
+    if (typeof authorLogin !== 'undefined' || typeof fullName !== 'undefined') {
+      filter.author = {};
+      if (typeof authorLogin !== 'undefined') {
+        filter.author.login = authorLogin;
+      }
+      if (typeof fullName !== 'undefined') {
+        filter.author.name = fullName;
+      }
+    }
+
+    if (typeof headline !== 'undefined') {
+      filter.headline = { contains: headline, mode: 'insensitive' };
+    }
+
+    if (typeof description !== 'undefined') {
+      filter.description = { contains: description, mode: 'insensitive' };
+    }
+
+    if (typeof tag !== null) {
+      filter.tags = { some: { name: tag } };
+    }
+
     return await this.prisma.post.findMany({
-      where: { authorId: userId },
-      include: { tags: true },
+      where: filter,
+      include: { tags: true, comments: true },
+      skip: skip,
+      take: take,
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
   }
 
-  private async getUserPostsByLogin(login: string) {
-    const user = await this.prisma.user.findUniqueOrThrow({
-      where: { login: login },
-    });
-
-    return await this.getUserPostsById(user['id']);
-  }
-
-  private async getAllPosts() {
-    return await this.prisma.post.findMany({
-      include: { tags: true },
-    });
-  }
-
-  async getUserPostListDtoById(userId: number) {
-    return this.convertPostListToDto(await this.getUserPostsById(userId), true);
-  }
-
-  async getUserPostListDtoByLogin(login: string) {
+  async getFilteredPostListDto(
+    skip: number,
+    take: number,
+    authorLogin?: string,
+    fullName?: string,
+    headline?: string,
+    description?: string,
+    tag?: string,
+  ) {
     return this.convertPostListToDto(
-      await this.getUserPostsByLogin(login),
-      true,
+      await this.getFilteredPosts(
+        skip,
+        take,
+        authorLogin,
+        fullName,
+        headline,
+        description,
+        tag,
+      ),
     );
-  }
-
-  async getGeneralPostListDto() {
-    return this.convertPostListToDto(await this.getAllPosts(), false);
   }
 
   async uploadPost(uploadDto: UploadPostDto): Promise<string> {
@@ -164,14 +197,6 @@ export class PostService {
         images: editDto.imageUrls,
         description: editDto.description,
         headline: editDto.headline,
-        tags: {
-          connectOrCreate: editDto.tags.map((tag) => {
-            return {
-              where: { name: tag },
-              create: { name: tag },
-            };
-          }),
-        },
       },
     });
   }

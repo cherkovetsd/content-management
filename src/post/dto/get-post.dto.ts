@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class GetPostDto {
   @ApiProperty()
@@ -13,4 +13,8 @@ export class GetPostDto {
   tags: string[];
   @ApiProperty()
   imageUrls: string[];
+  @ApiPropertyOptional()
+  commentCnt?: number;
+  @ApiPropertyOptional()
+  stringId?: string;
 }
