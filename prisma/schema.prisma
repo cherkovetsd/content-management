@@ -39,7 +39,6 @@ model Post {
     images String[]
     comments Comment[]
     createdAt DateTime @default(now())
-    rating Int?
     tags Tag[]
 }
 
